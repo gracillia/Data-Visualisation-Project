@@ -1,0 +1,33 @@
+---
+title: "data cleaning"
+author: "Gracillia Simson"
+date: "2023-09-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(naniar)
+install.packages("naniar")
+```
+
+```{r}
+uni_rank <- read_csv("World University Rankings 2023.csv")
+```
+
+```{r}
+n_miss(uni_rank)
+
+uni_rank_clean <- na.omit(uni_rank) %>% slice(-c(1489:1963))
+
+n_miss(uni_rank_clean)
+```
+
+```{r}
+uni_rank_clean %>% filter(Location == "Indonesia")
+```
+
+
+
+
+
